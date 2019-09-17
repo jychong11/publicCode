@@ -28,6 +28,9 @@
 
    <body>
 
+    <select id="itemsListBox">
+    </select>
+
     <canvas id="renderCanvas" touch-action="none"></canvas> //touch-action="none" for best results from PEP
 
     <script>
@@ -39,7 +42,18 @@
             // Add OBJ File to scene
             BABYLON.SceneLoader.Append("", "data:"+ objStr, scene, function () { 
                 scene.createDefaultCamera(true, true, true);
-            }, null, null, ".obj"﻿);       
+            }, null, null, ".obj");
+            fillListBox();            
+        }
+
+        function fillListBox() {
+            var listItems = ["a", "b", "c", "d"];
+            var listBoxStr = "";
+            for(var i = 0; i < listItems.length; i++)
+            {
+                listBoxStr +='<option value="'+i+'">' + listItems[i] + '</option>';
+            }
+            document.getElementById('itemsListBox').innerHTML = listBoxStr;
         }
 
         /******* Add the create scene function ******/
